@@ -5,6 +5,8 @@ This is relatively simple way to implement a multitouch-supporting drag & drop f
 This implementation uses a Sprite2D as a base class and relies on texture size for drag detection bounds size and shape of objects.
 This can be changed by changing the corresponding `_bounds` variable to an adjustable property via `@export` annotation.
 
+Made with and for Godot game engine, https://godotengine.org/license
+
 ## Limitations and features to be added:
 
 - Currently drag input events may have to be processed by all drag & drop items' scripts at worst. May be inefficient with large numbers of drag & drop items
