@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c7rbu3a7xy5ba"]
+
+[ext_resource type="Texture2D" uid="uid://lqrhmv52q271" path="res://icon.svg" id="1_udk8i"]
+[ext_resource type="Script" uid="uid://5u0745mncpp3" path="res://drag_drop_2d/drag_drop_item.gd" id="2_p1qke"]
+
+[node name="DragDropItem" type="Sprite2D" unique_id=1079406796]
+texture = ExtResource("1_udk8i")
+script = ExtResource("2_p1qke")

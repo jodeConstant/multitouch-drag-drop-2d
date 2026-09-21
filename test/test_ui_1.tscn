@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://w8ffhpkdv7n1"]
+
+[ext_resource type="Script" uid="uid://dgel13gu1ptxv" path="res://drag_drop_2d/drag_drop_z_sorter.gd" id="2_27fn8"]
+[ext_resource type="PackedScene" uid="uid://c7rbu3a7xy5ba" path="res://drag_drop_2d/drag_drop_item.tscn" id="2_m6e0p"]
+[ext_resource type="Script" uid="uid://ds5mtfe4xbqu6" path="res://test/drag_drop_settings_script.gd" id="4_m6jmm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpwc8"]
+font_size = 40
+
+[sub_resource type="Theme" id="Theme_x7tj4"]
+default_font_size = 40
+
+[node name="TestUI" type="CanvasLayer" unique_id=2144287900]
+
+[node name="DragDropContainer" type="Node2D" parent="." unique_id=826853692]
+script = ExtResource("2_27fn8")
+skip_type_check = true
+
+[node name="DragDropItem_basic" parent="DragDropContainer" unique_id=737861814 instance=ExtResource("2_m6e0p")]
+position = Vector2(160, 176)
+
+[node name="DragDropItem_smooth" parent="DragDropContainer" unique_id=1179293626 instance=ExtResource("2_m6e0p")]
+position = Vector2(424, 216)
+smooth_movement = true
+
+[node name="DragDropItem_snappy" parent="DragDropContainer" unique_id=1478348963 instance=ExtResource("2_m6e0p")]
+position = Vector2(720, 216)
+keep_drag_offset = false
+
+[node name="DragDropItem_L_sticky" parent="DragDropContainer" unique_id=1994233615 instance=ExtResource("2_m6e0p")]
+position = Vector2(176, 456)
+scale = Vector2(1.5, 1.5)
+min_move_step_sqrd = 1000.0
+
+[node name="DragDropItem_L_slow" parent="DragDropContainer" unique_id=1656734721 instance=ExtResource("2_m6e0p")]
+position = Vector2(416, 456)
+scale = Vector2(1.5, 1.5)
+smooth_movement = true
+move_fraction_per_frame = 0.2
+
+[node name="DragDropItem_L_snappy" parent="DragDropContainer" unique_id=1416793509 instance=ExtResource("2_m6e0p")]
+position = Vector2(696, 456)
+scale = Vector2(1.5, 1.5)
+keep_drag_offset = false
+
+[node name="Settings" type="Control" parent="." unique_id=289541773]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 96.0
+offset_top = 984.0
+offset_right = 760.0
+offset_bottom = 1408.0
+script = ExtResource("4_m6jmm")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Settings" unique_id=107109062]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 32.0
+offset_right = 520.0
+offset_bottom = 96.0
+text = "Override Settings"
+label_settings = SubResource("LabelSettings_fpwc8")
+horizontal_alignment = 1
+
+[node name="FractionLabel" type="Label" parent="Settings" unique_id=597171912]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 392.0
+offset_bottom = 176.0
+text = "Fraction per move:"
+label_settings = SubResource("LabelSettings_fpwc8")
+
+[node name="FractionEdit" type="TextEdit" parent="Settings" unique_id=693030748]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 112.0
+offset_right = 632.0
+offset_bottom = 176.0
+theme = SubResource("Theme_x7tj4")
+text = "0.9"
+
+[node name="MinStepLabel" type="Label" parent="Settings" unique_id=126982023]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 208.0
+offset_right = 435.0
+offset_bottom = 272.0
+text = "Min move increment:"
+label_settings = SubResource("LabelSettings_fpwc8")
+
+[node name="MinStepEdit" type="TextEdit" parent="Settings" unique_id=1406042059]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 208.0
+offset_right = 632.0
+offset_bottom = 272.0
+theme = SubResource("Theme_x7tj4")
+text = "1.0"
+
+[node name="Button" type="Button" parent="Settings" unique_id=325770601]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 296.0
+offset_right = 576.0
+offset_bottom = 376.0
+theme = SubResource("Theme_x7tj4")
+text = "Apply to all Items"
+
+[connection signal="on_settings_changed" from="Settings" to="DragDropContainer" method="_set_drag_follow_variables"]
+[connection signal="pressed" from="Settings/Button" to="Settings" method="_on_button_pressed"]
