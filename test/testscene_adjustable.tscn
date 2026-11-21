@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://nyf1voapwq6o"]
+
+[ext_resource type="PackedScene" uid="uid://ckw3bj1nvbp73" path="res://test/drag_drop_settings.tscn" id="1_8es32"]
+[ext_resource type="Script" uid="uid://dgel13gu1ptxv" path="res://drag_drop_2d/drag_drop_z_sorter.gd" id="2_umdh0"]
+[ext_resource type="PackedScene" uid="uid://c7rbu3a7xy5ba" path="res://drag_drop_2d/polymorphic/drag_drop_item_2d.tscn" id="3_8tsnc"]
+[ext_resource type="PackedScene" uid="uid://bjt71cbi6dwkh" path="res://drag_drop_2d/polymorphic/drag_drop_item_limited_2d.tscn" id="4_87s54"]
+[ext_resource type="PackedScene" uid="uid://b01qw013ipv1s" path="res://drag_drop_2d/polymorphic/drag_drop_item_smooth_2d.tscn" id="5_s1ndc"]
+[ext_resource type="PackedScene" uid="uid://dvhfwynwkcmy2" path="res://test/highlight_sprite_2d.tscn" id="6_8tsnc"]
+
+[node name="TestsceneAdjustable" type="Node2D" unique_id=484123291]
+
+[node name="DragDropSettings" parent="." unique_id=1089602357 instance=ExtResource("1_8es32")]
+offset_left = 64.0
+offset_top = 0.0
+offset_right = 720.0
+offset_bottom = 448.0
+
+[node name="DragDropSorter" type="Node2D" parent="." unique_id=1885509751]
+script = ExtResource("2_umdh0")
+
+[node name="DragDropItem" parent="DragDropSorter" unique_id=1079406796 instance=ExtResource("3_8tsnc")]
+position = Vector2(184, 847)
+scale = Vector2(1.5, 1.5)
+region_rect = Rect2(-0.54, 0, 0, 0)
+
+[node name="Label" type="Label" parent="DragDropSorter/DragDropItem" unique_id=146222546]
+offset_left = -64.0
+offset_top = -63.333336
+offset_right = 64.0
+offset_bottom = -40.333336
+text = "basic"
+horizontal_alignment = 1
+
+[node name="DragDropItemLimited2D" parent="DragDropSorter" unique_id=1843214639 instance=ExtResource("4_87s54")]
+position = Vector2(423, 841)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="DragDropSorter/DragDropItemLimited2D" unique_id=1512831883]
+offset_left = -64.0
+offset_top = -63.333336
+offset_right = 64.0
+offset_bottom = -40.333336
+text = "speed-limited"
+horizontal_alignment = 1
+
+[node name="DragDropItemSmooth2D" parent="DragDropSorter" unique_id=1460548761 instance=ExtResource("5_s1ndc")]
+position = Vector2(666, 840)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="DragDropSorter/DragDropItemSmooth2D" unique_id=1604587685]
+offset_left = -64.0
+offset_top = -63.333336
+offset_right = 64.0
+offset_bottom = -40.333336
+text = "smoothed"
+horizontal_alignment = 1
+
+[node name="HighlightSprite2D" parent="DragDropSorter" unique_id=1631861223 instance=ExtResource("6_8tsnc")]
+position = Vector2(-100, -100)
+
+[connection signal="_on_managed_item_dragged" from="DragDropSorter" to="DragDropSettings" method="_on_item_selected"]
+[connection signal="_on_managed_item_dragged" from="DragDropSorter" to="DragDropSorter/HighlightSprite2D" method="set_target"]

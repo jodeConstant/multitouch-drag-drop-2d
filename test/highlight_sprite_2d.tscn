@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dvhfwynwkcmy2"]
+
+[ext_resource type="Texture2D" uid="uid://u1vohu4yo33w" path="res://target rect 1.svg" id="1_fi1dx"]
+[ext_resource type="Script" uid="uid://bnt7xn3jocdb2" path="res://test/highlight_sprite_2d.gd" id="1_nf23a"]
+
+[node name="HighlightSprite2D" type="Sprite2D" unique_id=1631861223]
+texture = ExtResource("1_fi1dx")
+script = ExtResource("1_nf23a")

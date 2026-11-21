@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://ckw3bj1nvbp73"]
+
+[ext_resource type="Script" uid="uid://ds5mtfe4xbqu6" path="res://test/drag_drop_settings_script.gd" id="1_h65by"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rcn3"]
+font_size = 38
+
+[sub_resource type="Theme" id="Theme_hhtu7"]
+default_font_size = 38
+
+[node name="DragDropSettings" type="Control" unique_id=1089602357]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 832.0
+offset_right = 768.0
+offset_bottom = 1288.0
+script = ExtResource("1_h65by")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1764970775]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14667135, 0.26460764, 0.47093672, 0.43137255)
+
+[node name="HeaderLabel" type="Label" parent="." unique_id=1931268281]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "Adjust selected item's values:"
+label_settings = SubResource("LabelSettings_4rcn3")
+horizontal_alignment = 1
+
+[node name="MinStepLabel" type="Label" parent="." unique_id=1685280072]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 435.0
+offset_bottom = 160.0
+text = "Move start threshold:"
+label_settings = SubResource("LabelSettings_4rcn3")
+
+[node name="MinStepEdit" type="TextEdit" parent="." unique_id=1922824133]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 96.0
+offset_right = 632.0
+offset_bottom = 160.0
+theme = SubResource("Theme_hhtu7")
+
+[node name="RateLabel" type="Label" parent="." unique_id=811055343]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 176.0
+offset_right = 392.0
+offset_bottom = 240.0
+text = "Move rate (% or px):"
+label_settings = SubResource("LabelSettings_4rcn3")
+
+[node name="RateEdit" type="TextEdit" parent="." unique_id=1352268106]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 176.0
+offset_right = 632.0
+offset_bottom = 240.0
+theme = SubResource("Theme_hhtu7")
+
+[node name="AccelerationLabel" type="Label" parent="." unique_id=1129328116]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 256.0
+offset_right = 435.0
+offset_bottom = 320.0
+text = "Acceleration:"
+label_settings = SubResource("LabelSettings_4rcn3")
+
+[node name="AccelerationEdit" type="TextEdit" parent="." unique_id=1464369009]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 256.0
+offset_right = 632.0
+offset_bottom = 320.0
+theme = SubResource("Theme_hhtu7")
+
+[node name="Button" type="Button" parent="." unique_id=743020846]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -112.0
+offset_right = -176.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_hhtu7")
+text = "Apply"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
